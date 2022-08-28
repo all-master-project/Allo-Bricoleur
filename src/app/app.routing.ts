@@ -9,8 +9,12 @@ import { HomeComponent } from './pages/home.component';
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'upgrade',
+    redirectTo: 'home',
     pathMatch: 'full',
+  }
+  , {
+    path: 'home',
+    component: HomeComponent
   }
   , {
     path: '',
@@ -21,10 +25,7 @@ const routes: Routes =[
     }]
   }
 
-  , {
-    path: 'home',
-    component: HomeComponent
-  }
+  
 
 ];
 
