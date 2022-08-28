@@ -1,0 +1,113 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Clients</h4>
+              <p class="card-category">Crée votre profile</p>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="nom" 
+                      type="text" required [(ngModel)]="Client.nom" name="nom">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Prénom" type="text"
+                      required [(ngModel)]="Client.prenom" name="prenom">
+                    </mat-form-field>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="email" type="email"
+                      required [(ngModel)]="Client.email" name="email">
+                    </mat-form-field>
+                  </div>
+                  
+                  <div class="col-md-4">
+                    
+                    <div *ngIf="villes" class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Villes</label>
+                      </div>
+                      <select [(ngModel)]="Client.id_ville" class="custom-select" id="inputGroupSelect01">
+                        <option *ngFor="let vle of villes" value="{{ vle.id }}">{{ vle.ville }}</option>
+                      </select>
+                    </div>
+                  </div>
+   
+                </div>
+                
+  
+                <button mat-raised-button (click)="saveClient()" class="btn btn-danger pull-right">Crée Profile</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-header card-header-danger">
+                          <h4 class="card-title " >Clients Table</h4>
+                          <p class="card-category"> Here is a subtitle for this table</p>
+                      </div>
+                      <div class="card-body">
+                          <div class="table-responsive" *ngIf="Clients">
+                              <table class="table">
+                                  <thead class=" text-primary">
+                                      <th>
+                                          Nom
+                                      </th>
+                                      <th>
+                                          Prenom
+                                      </th>
+                                      <th>
+                                          Email
+                                      </th>
+                                      <th>
+                                          ACTION
+                                      </th>
+                                  </thead>
+                                  <tbody  *ngFor="let brico of Clients">
+                                      <tr >
+                                          <td>
+                                            {{ brico.nom }}
+                                          </td>
+                                          <td>
+                                            {{ brico.prenom }}
+                                          </td>
+                                          <td  class="text-primary">
+                                            {{ brico.email }}
+                                          </td>
+                                          <td class="td-actions">
+                                            <button (click)="showClient(brico)" mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button (click)="deleteClient(brico.id)" mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                      </tr>
+                                      
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>

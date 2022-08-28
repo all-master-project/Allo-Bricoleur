@@ -1,0 +1,210 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Bricolleur</h4>
+            <p class="card-category">Crée votre profile</p>
+          </div>
+          <div class="card-body">
+            <form>
+              <!-- <div class="row">
+                              <div class="col-md-5">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Company (disabled)" disabled>
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Username">
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Email address" type="email">
+                                  </mat-form-field>
+                              </div>
+                          </div> -->
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="nom" type="text" required [(ngModel)]="Bricoleur.nom" name="nom">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Prénom" type="text" required [(ngModel)]="Bricoleur.prenom"
+                      name="prenom">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="cin" type="text" required [(ngModel)]="Bricoleur.cin" name="cin">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="email" type="email" required [(ngModel)]="Bricoleur.email"
+                      name="email">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="password" type="password" required [(ngModel)]="Bricoleur.password"
+                      name="email">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="adresse" type="text" required [(ngModel)]="Bricoleur.adresse"
+                      name="adresse">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="tel" type="text" required [(ngModel)]="Bricoleur.tel" name="tel">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Experience" type="number" required
+                      [(ngModel)]="Bricoleur.anneexperience" name="anneexperience">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <!-- <select *ngIf="villes" [(ngModel)]="Bricoleur.id_ville">
+                    <option *ngFor="let vl of villes" value="{{ vl.id }}"> {{ vl.ville }}</option>
+                  </select> -->
+
+                  <div *ngIf="villes" class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Villes</label>
+                    </div>
+                    <select [(ngModel)]="Bricoleur.id_ville" class="custom-select" id="inputGroupSelect01">
+                      <option *ngFor="let vle of villes" value="{{ vle.id }}">{{ vle.ville }}</option>
+                    </select>
+                  </div>
+
+
+
+                </div>
+                <div class="col-md-4">
+                  <div *ngIf="category" class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">SOUS SERVICE</label>
+                    </div>
+                    <select [(ngModel)]="Bricoleur.id_sousServices" class="custom-select" id="inputGroupSelect01">
+                      <option *ngFor="let soss of category" value="{{ soss.id }}">{{ soss.nom }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Apropos</label>
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Apropos......" required [(ngModel)]="Bricoleur.apropos"
+                      name="apropos"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <button mat-raised-button (click)="saveBricoleur()" class="btn btn-danger pull-right">ENREGISTRER</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Bricoleurs Table</h4>
+            <p class="card-category"> Here is a subtitle for this table</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive" *ngIf="Bricoleurs">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Nom
+                  </th>
+                  <th>
+                    Prenom
+                  </th>
+                  <th>
+                    Adresse - ville
+                  </th>
+                  <th>
+                    Années Experience
+                  </th>
+                  <th>
+                    Actions
+                  </th>
+                </thead>
+                <tbody *ngFor="let brico of Bricoleurs">
+                  <tr>
+                    <td>
+                      {{ brico.nom }}
+                    </td>
+                    <td>
+                      {{ brico.prenom }}
+                    </td>
+                    <td>
+                      {{ brico.adresse }}
+                    </td>
+                    <td class="text-primary">
+                      {{ brico.anneexperience }} ANS
+                    </td>
+                    
+                      <td class="td-actions text-right">
+                          <button (click)="showBrico(brico)" mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                              <i class="material-icons">edit</i>
+                          </button>
+                          <button (click)="deleteBricoleur(brico.id)" mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                              <i class="material-icons">close</i>
+                          </button>
+                      </td>
+                  </tr>
+              </tbody>
+              </table>
+              <!-- 
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Editer votre Profile</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      VOULEZ VOUS SUPPRIMER CE BRICOLEUR
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermé</button>
+                      <button type="button"  (click)="saveBricoleur()" class="btn btn-primary" data-dismiss="modal">Enregistrer</button>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,162 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Mission</h4>
+              <p class="card-category">Crée votre mission</p>
+            </div>
+            <div class="card-body">
+              <form>
+                <!-- <div class="row">
+                                <div class="col-md-5">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Company (disabled)" disabled>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Username">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Email address" type="email">
+                                    </mat-form-field>
+                                </div>
+                            </div> -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="titre" 
+                      type="text" required [(ngModel)]="Mission.titre" name="titre">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="dateMission" type="text"
+                      required [(ngModel)]="Mission.dateMission" name="dateMission">
+                    </mat-form-field>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="prixMission" type="text"
+                      required [(ngModel)]="Mission.prixMission" name="prixMission">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="descriptions" type="text"
+                      required [(ngModel)]="Mission.descriptions" name="descriptions">
+                    </mat-form-field>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <!-- <mat-form-field class="example-full-width">
+                      <input matInput placeholder="service_id" type="text"
+                      required [(ngModel)]="Mission.service_id" name="service_id">
+                    </mat-form-field> -->
+<!--  -->
+                    <div *ngIf="category" class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">SOUS SERVICE</label>
+                      </div>
+                      <select [(ngModel)]="Mission.service_id" class="custom-select" id="inputGroupSelect01">
+                        <option *ngFor="let soss of category" value="{{ soss.id }}">{{ soss.nom }}</option>
+                      </select>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6">
+           
+
+                    <!-- *********************** -->
+                    <div *ngIf="clients" class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Client</label>
+                      </div>
+                      <select [(ngModel)]="Mission.client_id" class="custom-select" id="inputGroupSelect01">
+                        <option *ngFor="let clt of clients" value="{{ clt.id }}">{{ clt.nom }} {{ clt.prenom }}</option>
+                      </select>
+                    </div>
+                    <!-- ********************************** -->
+                  </div>
+                </div>
+                <button mat-raised-button (click)="saveMission()" class="btn btn-danger pull-right">Crée Profile</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-header card-header-danger">
+                          <h4 class="card-title " >Missions Table</h4>
+                          <p class="card-category"> Here is a subtitle for this table</p>
+                      </div>
+                      <div class="card-body">
+                          <div class="table-responsive" *ngIf="Missions">
+                              <table class="table">
+                                  <thead class=" text-primary">
+                                      <th>
+                                        titre
+                                      </th>
+                                      <th>
+                                        dateMission
+                                      </th>
+                                      <th>
+                                        prixMission
+                                      </th>
+                                      <th>
+                                        descriptions
+                                      </th>
+                                      <th>
+                                        Actions
+                                      </th>
+                                  </thead>
+                                  <tbody  *ngFor="let miss of Missions">
+                                      <tr >
+                                          <td>
+                                            {{ miss.titre }}
+                                          </td>
+                                          <td>
+                                            {{ miss.dateMission }}
+                                          </td>
+                                          <td>
+                                            {{ miss.prixMission }}
+                                          </td>
+                                          <td class="text-primary">
+                                            {{ miss.descriptions }}
+                                          </td>
+                                          
+
+                                          <td class="td-actions">
+                                            <button (click)="showMission(miss)" mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button (click)="deleteMission(miss.id)" mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                      </tr>
+                                      
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>

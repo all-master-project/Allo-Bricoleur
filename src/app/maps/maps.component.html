@@ -1,0 +1,108 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Adresse</h4>
+              <p class="card-category">Crée Adress</p>
+            </div>
+            <div class="card-body">
+              <form>
+                <!-- <div class="row">
+                                <div class="col-md-5">
+                                  <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Company (disabled)" disabled>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Username">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Email address" type="email">
+                                    </mat-form-field>
+                                </div>
+                            </div> -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="region" 
+                      type="text" required [(ngModel)]="Adress.region" name="region">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="ville" type="text"
+                      required [(ngModel)]="Adress.ville" name="ville">
+                    </mat-form-field>
+                  </div>
+                </div>
+                
+                
+                
+  
+                
+  
+                
+                <button mat-raised-button (click)="saveAdress()" class="btn btn-danger pull-right">Crée Profile</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-header card-header-danger">
+                          <h4 class="card-title " >Adresss Table</h4>
+                          <p class="card-category"> Here is a subtitle for this table</p>
+                      </div>
+                      <div class="card-body">
+                          <div class="table-responsive" *ngIf="Adresss">
+                              <table class="table">
+                                  <thead class=" text-primary">
+                                      <th>
+                                          Région
+                                      </th>
+                                      <th>
+                                          ville
+                                      </th>
+                                      <th>
+                                        Action
+                                    </th>
+                                     
+                                  </thead>
+                                  <tbody  *ngFor="let adrs of Adresss">
+                                      <tr >
+                                          <td>
+                                            {{ adrs.region }}
+                                          </td>
+                                          <td class="text-primary">
+                                            {{ adrs.ville }}
+                                          </td>
+                                          <td class="td-actions text-right">
+                                            <button (click)="showAdress(adrs)" mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button (click)="deleteAdress(adrs.id)" mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                      </tr>
+                                      
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>

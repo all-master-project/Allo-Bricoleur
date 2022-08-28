@@ -1,0 +1,190 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+              <div class="card-header card-header-danger">
+                <h4 class="card-title">Service</h4>
+                <p class="card-category">Crée votre Service</p>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="nom" type="text"
+                        required [(ngModel)]="Service.nom" name="nom">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <button mat-raised-button (click)="saveService()" class="btn btn-danger pull-right">Crée Profile</button>
+                  <div class="clearfix"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Sous Service</h4>
+                <p class="card-category">Crée votre Sous Service</p>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="nom" type="text"
+                        required [(ngModel)]="SousService.nom" name="nom">
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <!-- <select *ngIf="villes" [(ngModel)]="SousService.adress_id">
+                        <option value="0">Villes</option>
+                        <option *ngFor="let vle of villes" value="{{vle.id}}"> {{ vle.nom }}</option>
+                      </select>
+
+ -->
+                      <div *ngIf="villes" class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">Villes</label>
+                        </div>
+                        <select [(ngModel)]="SousService.adress_id" class="custom-select" id="inputGroupSelect01">
+                          <option *ngFor="let vle of villes" value="{{vle.id}}">{{ vle.ville }}</option>
+                        </select>
+                      </div>
+
+
+
+                    </div>
+                  
+                      <div class="col-md-6 ">
+                        
+                       <!--  <select *ngIf="Services" [(ngModel)]="SousService.service_id">
+                          <option value="0">Sous Service</option>
+                          <option *ngFor="let ssd of Services" value="{{ssd.id}}"> {{ ssd.nom }}</option>
+                        </select> -->
+
+
+                        <div *ngIf="Services" class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Services</label>
+                          </div>
+                          <select [(ngModel)]="SousService.service_id" class="custom-select" id="inputGroupSelect01">
+                            <option *ngFor="let ssd of Services" value="{{ssd.id}}">{{ ssd.nom }}</option>
+                          </select>
+                        </div>
+
+
+                      </div>
+
+                      
+
+
+                  </div>    
+                    <button mat-raised-button (click)="saveSousService()" class="btn btn-primary pull-right">Crée Profile</button>
+                  <div class="clearfix"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+      <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title " >Services Table</h4>
+                        <p class="card-category"> Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive" *ngIf="Services">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Nom
+                                    </th>
+                                    <th>
+                                      Action
+                                    </th>
+
+                                </thead>
+                                <tbody  *ngFor="let serv of Services">
+                                    <tr >
+                                        <td>
+                                          {{ serv.nom }}
+                                        </td>
+                                        <td class="td-actions text-right">
+                                          <button (click)="showService(serv)" mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                              <i class="material-icons">edit</i>
+                                          </button>
+                                          <button (click)="deleteService(serv.id)" mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                              <i class="material-icons">close</i>
+                                          </button>
+                                      </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title " >Sous Services Table</h4>
+                        <p class="card-category"> Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive" *ngIf="SousServices">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Nom
+                                    </th>
+                                    <th>
+                                        Sous Service
+                                    </th>
+                                    <th>
+                                        Adresse
+                                    </th>
+                                    <th>
+                                        Action
+                                  </th>
+                                </thead>
+                                <tbody  *ngFor="let ssvs of SousServices">
+                                    <tr >
+                                        <td>
+                                            {{ ssvs.nom }}
+                                          </td>
+                                          <td>
+                                            {{ ssvs.service_id }}
+                                          </td>
+                                          <td>
+                                            {{ ssvs.adress_id }}
+                                          </td>
+                                          <td class="td-actions text-right">
+                                            <button (click)="showSousServices(ssvs)" mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button (click)="deleteSousServices(ssvs.id)" mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
