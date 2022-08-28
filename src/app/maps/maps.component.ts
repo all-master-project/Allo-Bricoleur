@@ -57,8 +57,8 @@ export class MapsComponent implements OnInit {
     this.AdressService.create(data)
       .subscribe(
         response => {
-          console.log(response);
-          this.submitted = true;
+          this.Adresss = [];
+          this.getAllAdress();
           this.newAdress();
         },
         error => {

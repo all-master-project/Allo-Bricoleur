@@ -1,0 +1,16 @@
+.page-header {
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: 50%;
+}
+.min-vh-75 {
+    min-height: 75vh!important;
+}
+.navbar {
+
+    margin-bottom: 0;
+}
