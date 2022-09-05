@@ -247,4 +247,5 @@ Instagram: <https://www.instagram.com/CreativeTimOfficial>
 
 [version-badge]: https://img.shields.io/badge/version-2.7.0-blue.svg
 #   A l l o - b r i c o l l e u r - f r o n t - e n d - v 1  
+ #   A l l o - b r i c o l l e u r - f r o n t - e n d - v 1  
  
